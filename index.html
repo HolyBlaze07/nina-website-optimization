@@ -75,7 +75,8 @@
 					<li><a href="#contact">Contact</a></li>
 					<li><a class="social-link" href="https://www.instagram.com/ninacarducci.photo/?hl=fr"
 							target="_blank"><img src="./assets/images/instagram.webp" loading="lazy"
-								alt="Logo Instagram, icône noire et blanche d’un appareil photo."></a></li>
+								alt="Logo Instagram, icône noire et blanche d’un appareil photo.">
+							<span class="visually-hidden">Suivez-moi sur Instagram</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -107,12 +108,12 @@
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-					data-bs-slide="prev">
+					data-bs-slide="prev" aria-label="Image précédente">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Previous</span>
 				</button>
 				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-					data-bs-slide="next">
+					data-bs-slide="next" aria-label="Image précédente">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Next</span>
 				</button>
@@ -251,15 +252,15 @@
 					<textarea name="message" id="message" cols="30" rows="10"></textarea>
 					<input type="submit" value="Envoyer" />
 				</form> -->
-					<form action="" method="post">
+					<form action="process.php" method="post">
 						<label for="nom">Nom</label>
-						<input type="text" name="nom" id="nom">
+						<input type="text" name="nom" id="nom" required>
 
 						<label for="email">Email</label>
-						<input type="email" name="email" id="email">
+						<input type="email" name="email" id="email" required>
 
 						<label for="message">Message</label>
-						<textarea name="message" id="message" cols="30" rows="10"></textarea>
+						<textarea name="message" id="message" cols="30" rows="10" required></textarea>
 
 						<input type="submit" value="Envoyer">
 					</form>
