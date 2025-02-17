@@ -8,6 +8,11 @@ body {
 	font-style: normal;
 }
 
+a {
+	color: #0056b3;
+	/* Darker blue for better contrast */
+}
+
 .top-header {
 	background-color: white;
 	position: sticky;
