@@ -1,8 +1,8 @@
-(function($) {
-  $.fn.mauGallery = function(options) {
+(function ($) {
+  $.fn.mauGallery = function (options) {
     var options = $.extend($.fn.mauGallery.defaults, options);
     var tagsCollection = [];
-    return this.each(function() {
+    return this.each(function () {
       $.fn.mauGallery.methods.createRowWrapper($(this));
       if (options.lightBox) {
         $.fn.mauGallery.methods.createLightBox(
@@ -15,7 +15,7 @@
 
       $(this)
         .children(".gallery-item")
-        .each(function(index) {
+        .each(function (index) {
           $.fn.mauGallery.methods.responsiveImageItem($(this));
           $.fn.mauGallery.methods.moveItemInRowWrapper($(this));
           $.fn.mauGallery.methods.wrapItemInColumn($(this), options.columns);
@@ -48,8 +48,8 @@
     tagsPosition: "bottom",
     navigation: true
   };
-  $.fn.mauGallery.listeners = function(options) {
-    $(".gallery-item").on("click", function() {
+  $.fn.mauGallery.listeners = function (options) {
+    $(".gallery-item").on("click", function () {
       if (options.lightBox && $(this).prop("tagName") === "IMG") {
         $.fn.mauGallery.methods.openLightBox($(this), options.lightboxId);
       } else {
@@ -119,75 +119,75 @@
         .attr("src", element.attr("src"));
       $(`#${lightboxId}`).modal("toggle");
     },
-    
+
     prevImage() {
-      console.log("Previous button clicked"); // Debugging statement
-  
+      console.log("Previous button exists?", $(".mg-prev").length); // Debugging statement
+
       let activeImageSrc = $(".lightboxImage").attr("src");
       let imagesCollection = [];
-  
+
       // Collect all image sources in the gallery
-      $("img.gallery-item").each(function() {
-          imagesCollection.push($(this).attr("src"));
+      $("img.gallery-item").each(function () {
+        imagesCollection.push($(this).attr("src"));
       });
-  
+
       let index = imagesCollection.indexOf(activeImageSrc);
-  
+
       if (index === -1) {
-          console.error("Active image not found in gallery.");
-          return;
+        console.error("Active image not found in gallery.");
+        return;
       }
-  
+
       // Calculate new index (looping behavior)
+       // Loop to last image if at first image
       let newIndex = (index - 1 + imagesCollection.length) % imagesCollection.length;
-      
+
       // Set the new image in the lightbox
       $(".lightboxImage").attr("src", imagesCollection[newIndex]);
-  },
-  
-  nextImage() {
-      console.log("Next button clicked"); // Debugging statement
-  
+      ;
+    },
+
+    nextImage() {
+      console.log("Next button exists?", $(".mg-next").length);
+ // Debugging statement
+
       let activeImageSrc = $(".lightboxImage").attr("src");
       let imagesCollection = [];
-  
+
       // Collect all image sources in the gallery
-      $("img.gallery-item").each(function() {
-          imagesCollection.push($(this).attr("src"));
+      $("img.gallery-item").each(function () {
+        imagesCollection.push($(this).attr("src"));
       });
-  
+
       let index = imagesCollection.indexOf(activeImageSrc);
-  
+
       if (index === -1) {
-          console.error("Active image not found in gallery.");
-          return;
+        console.error("Active image not found in gallery.");
+        return;
       }
-  
+
       // Calculate new index (looping behavior)
       let newIndex = (index + 1) % imagesCollection.length;
-      
+
       // Set the new image in the lightbox
       $(".lightboxImage").attr("src", imagesCollection[newIndex]);
-  },
-    
+    },
+
     createLightBox(gallery, lightboxId, navigation) {
-      gallery.append(`<div class="modal fade" id="${
-        lightboxId ? lightboxId : "galleryLightbox"
-      }" tabindex="-1" role="dialog" aria-hidden="true">
+      gallery.append(`<div class="modal fade" id="${lightboxId ? lightboxId : "galleryLightbox"
+        }" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
-                            ${
-                              navigation
-                                ? '<div class="mg-prev" style="cursor:pointer;position:absolute;top:50%;left:-15px;background:white;"><</div>'
-                                : '<span style="display:none;" />'
-                            }
+                            ${navigation
+          ? '<div class="mg-prev" style="cursor:pointer;position:absolute;top:50%;left:-15px;background:white;"><</div>'
+          : '<span style="display:none;" />'
+        }
                             <img class="lightboxImage img-fluid" alt="Contenu de l'image affichée dans la modale au clique"/>
-                            ${
-                              navigation
-                                ? '<div class="mg-next" style="cursor:pointer;position:absolute;top:50%;right:-15px;background:white;}">></div>'
-                                : '<span style="display:none;" />'
-                            }
+                            ${navigation
+          ? '<div class="mg-next" style="cursor:pointer;position:absolute;top:50%;right:-15px;background:white;}">></div>'
+          : '<span style="display:none;" />'
+        }
                         </div>
                     </div>
                 </div>
@@ -196,7 +196,7 @@
     showItemTags(gallery, position, tags) {
       var tagItems =
         '<li class="nav-item"><span class="nav-link active active-tag"  data-images-toggle="all">Tous</span></li>';
-      $.each(tags, function(index, value) {
+      $.each(tags, function (index, value) {
         tagItems += `<li class="nav-item active">
                 <span class="nav-link"  data-images-toggle="${value}">${value}</span></li>`;
       });
@@ -214,12 +214,14 @@
       if ($(this).hasClass("active-tag")) {
         return;
       }
+      // Remove active styles from previously selected tags
       $(".active-tag").removeClass("active-tag active");
+      // Apply correct active styles to the clicked tag
       $(this).addClass("active-tag active");
 
       var tag = $(this).data("images-toggle");
-
-      $(".gallery-item").each(function() {
+      // Show or hide images based on selected tag
+      $(".gallery-item").each(function () {
         $(this)
           .parents(".item-column")
           .hide();
