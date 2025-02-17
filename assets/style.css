@@ -40,6 +40,12 @@ body {
 	color: #000
 }
 
+a {
+	color: #0056b3;
+	/* Darker blue for better contrast */
+}
+
+
 .social-link img {
 	width: 20px
 }
