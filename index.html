@@ -37,7 +37,7 @@
 	<meta name="description"
 		content="Découvrez l'univers de Nina Carducci, photographe professionnelle passionnée par l'art de capturer des moments uniques et émouvants à travers son objectif." />
 	<!-- Local Business Schema -->
-	<script type="application/ld+json">
+	<!-- <script type="application/ld+json">
 			{
 			  "@context": "https://schema.org",
 			  "@type": "LocalBusiness",
@@ -52,7 +52,7 @@
 			  "telephone": "+33 (0)5 56 67 78 89",
 			  "openingHours": "Mo-Fr 10:00-19:00"
 			}
-			</script>
+			</script> -->
 
 
 	<script src="./assets/bootstrap/bootstrap.bundle.min.js"></script>
@@ -266,9 +266,16 @@
 					</form>
 					<div class="contact-info">
 						<h3>Informations de contact</h3>
-						<p><strong>Adresse :</strong> 68 avenue Alsace-Lorraine, 33200 Bordeaux, France</p>
-						<p><strong>Téléphone :</strong> +33 (0)5 56 67 78 89</p>
-						<p><strong>Disponibilité :</strong> Du lundi au vendredi de 10h à 19h</p>
+						<p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><strong>Adresse :</strong> 
+<span itemprop="streetAddress">68 avenue Alsace-Lorraine</span>, 
+<span itemprop="postalCode">33200</span> 
+<span itemprop="addressLocality">Bordeaux</span>, 
+<span itemprop="addressCountry">France</span></p>
+						<p><strong>Téléphone :</strong> 
+<span itemprop="telephone">+33 (0)5 56 67 78 89</span></p>
+						<p itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification"><strong>Disponibilité :</strong>
+<span itemprop="dayOfWeek" itemscope itemtype="http://schema.org/DayOfWeek"> 
+<span itemprop="name">Du lundi au vendredi</span> </span>de 10h à 19h</p>
 					</div>
 
 
